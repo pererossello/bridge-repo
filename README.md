@@ -8,3 +8,6 @@ For more details, refer to our paper:
 [**Rosselló, P. et al. (2025)**](https://arxiv.org/abs/2506.03969).
 
 The code will be made publicly available soon.
+
+
+<small>This work has been supported by the Spanish Ministry of Science and Innovation under the Big Data of the Cosmic-Web project (PID2020-120612GB-I00 / AEI / 10.13039/501100011033, PI: Francisco-Shu Kitaura).</small>
