@@ -8,5 +8,9 @@ __pycache__
 .ruff_cache
 *.egg-info/
 
+example/N32_R10_KEY1_WN_1LPT_SPHI_PL_NB/00CH00
+example/N32_R10_KEY1_WN_1LPT_SPHI_PL_NB/data
+example/analytics/results
+
 z_notes
 z_bin
