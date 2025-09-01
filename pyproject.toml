@@ -35,11 +35,7 @@ dev = [
   "pre-commit>=4.2.0,<5.0.0",
   "ipykernel>=6.30.0,<7.0.0"
 ]
-
-gpu = [
-  "jax[cuda12]>=0.7,<0.8"
-]
-
+gpu = ["jax[cuda12]>=0.7,<0.8"]
 docs = [
   "mkdocs>=1.6.1,<2.0.0",
   "mkdocs-material>=9.6.16,<10.0.0",
@@ -48,12 +44,10 @@ docs = [
 ]
 
 [project.scripts]
-lssim = "lssim.cli:app"
+bridge = "bridge.cli:app"
 
 [tool.hatch.build.targets.wheel]
-packages = [
-  { include = "bridge", from = "src" }
-]
+packages = ["src/bridge"]   # ← this is the Hatchling way
 
 [tool.black]
 line-length = 88
