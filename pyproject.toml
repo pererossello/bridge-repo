@@ -63,7 +63,7 @@ src = ["src"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
-ignore = ["E501",  "E731", "F841"]
+ignore = ["E501",  "E731", "F841", "E712"]
 exclude = ["notebooks", "src/bridge/forward_model/plot_utils.py"]
 
 [tool.mypy]

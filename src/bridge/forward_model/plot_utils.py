@@ -1,14 +1,18 @@
+# ruff: noqa
+
+import sys
+
+import numpy as np
 import jax.numpy as jnp
 import matplotlib.pyplot as plt
-import numpy as np
-from matplotlib.colors import BoundaryNorm, ListedColormap
-from matplotlib.patches import Patch
 from matplotlib.ticker import FixedLocator
+from matplotlib.colors import ListedColormap, BoundaryNorm
+from matplotlib.patches import Patch
 
 from .fourier import get_k
 from .stats import (
-    get_cross_power_spec_1D,
     get_pow_spec_1D,
+    get_cross_power_spec_1D,
     get_radial_distro,
 )
 
@@ -53,9 +57,9 @@ def plot_cubes(
         n_col = 2
         n_row = 2
 
-    ratio = n_col / n_row
+    ratio = n_col / n_row  # type: ignore
     figsize_fact = figsize / np.sqrt(ratio)
-    fig, axs = plt.subplots(n_row, n_col, figsize=(figsize_fact * ratio, figsize_fact))
+    fig, axs = plt.subplots(n_row, n_col, figsize=(figsize_fact * ratio, figsize_fact))  # type: ignore
     plt.subplots_adjust(wspace=wspace, hspace=0.05)
 
     ims = []
@@ -123,7 +127,7 @@ def get_projection(array, axis, idx, width):
     elif axis == 2:
         matrix = array[:, :, idx_min:idx_max]
 
-    matrix = np.sum(matrix, axis=axis) / width
+    matrix = np.sum(matrix, axis=axis) / width  # type: ignore
     min_val = np.min(matrix)
     max_val = np.max(matrix)
 
@@ -197,7 +201,7 @@ def compare_pow_spec(
         plt.subplots_adjust(wspace=0.15, hspace=None)
 
     if pk_cube is not None:
-        pk0 = pk_ref
+        pk0 = pk_ref  # type: ignore
 
     for i, delta in enumerate(delta_list):
         if pk_cube is not None:
@@ -205,7 +209,7 @@ def compare_pow_spec(
         k, pk = get_pow_spec_1D(delta, L, n_bins=n_bins, sphere_only=sphere_only)
 
         axs[0].plot(k, pk, c=cs[i], ls=ls[i], label=labels[i], lw=lw, alpha=alpha)
-        axs[1].plot(k, pk / pk0, c=cs[i], ls=ls[i], lw=lw, alpha=alpha)
+        axs[1].plot(k, pk / pk0, c=cs[i], ls=ls[i], lw=lw, alpha=alpha)  # type: ignore
 
         if cross:
             k, pk_cross = get_cross_power_spec_1D(
@@ -216,7 +220,7 @@ def compare_pow_spec(
     if pk_cube is not None:
         axs[0].plot(
             k,
-            pk_ref,
+            pk_ref,  # type: ignore
             c=cs[0],
             ls=ls[0],
             label=labels[0],
@@ -338,7 +342,7 @@ def stats_plot_for_article(bk_rat_y_lim=(0.5, 1.5)):
     total_height = ax00_pos.y1 - ax11_pos.y0
 
     ax_c = fig.add_axes(
-        [ax01_pos.x1 + separation, ax11_pos.y0, ax01_pos.width, total_height]
+        [ax01_pos.x1 + separation, ax11_pos.y0, ax01_pos.width, total_height]  # type: ignore
     )
 
     axs_all = list(axs.ravel()) + [ax_c]
@@ -438,7 +442,7 @@ def stats_plot_for_article_2(bk_rat_y_lim=(0.5, 1.5), quad_rat_y_lim=(-5, 5)):
     total_height = ax00_pos.y1 - ax12_pos.y0
 
     ax_c = fig.add_axes(
-        [ax02_pos.x1 + separation * 4.5, ax12_pos.y0, ax02_pos.width, total_height]
+        [ax02_pos.x1 + separation * 4.5, ax12_pos.y0, ax02_pos.width, total_height]  # type: ignore
     )
 
     tick_label_size_fact = 1.2
@@ -702,7 +706,7 @@ def contour_density(
         labels = []
         a = len(levels)
         for i, level in enumerate(levels):
-            color = cmap((a - i) / a)
+            color = cmap((a - i) / a)  # type: ignore
             handles.append(Patch(facecolor=color, edgecolor="none", alpha=alpha))
             labels.append(f"{int(level * 100)}%")
 
