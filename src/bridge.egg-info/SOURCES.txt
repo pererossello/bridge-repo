@@ -1,0 +1,12 @@
+LICENSE.md
+README.md
+pyproject.toml
+src/bridge/__init__.py
+src/bridge/cli.py
+src/bridge.egg-info/PKG-INFO
+src/bridge.egg-info/SOURCES.txt
+src/bridge.egg-info/dependency_links.txt
+src/bridge.egg-info/entry_points.txt
+src/bridge.egg-info/requires.txt
+src/bridge.egg-info/top_level.txt
+tests/test_imports.py
