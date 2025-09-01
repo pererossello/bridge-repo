@@ -1,11 +1,12 @@
 .venv
 
+cache
 __pycache__
 
 .mypy_cache
 .pytest_cache
 .ruff_cache
-
-*.egg-info
+*.egg-info/
 
 z_notes
+z_bin

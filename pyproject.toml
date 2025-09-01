@@ -17,7 +17,8 @@ dependencies = [
   "scipy>=1.16.1,<2.0.0",
   "h5py>=3.14.0,<4.0.0",
   "jax>=0.7.0,<0.8.0",
-  "numpyro>=0.19.0,<0.20.0"
+  "numpyro>=0.19.0,<0.20.0",
+  "jax-cosmo>=0.1.0"
 ]
 
 [project.optional-dependencies]
