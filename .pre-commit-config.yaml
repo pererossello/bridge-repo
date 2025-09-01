@@ -1,22 +1,21 @@
+exclude: ^example/
+
 repos:
   - repo: https://github.com/psf/black
     rev: 24.3.0
     hooks:
       - id: black
-        exclude: example/
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.4.1
     hooks:
       - id: ruff
-        exclude: example/
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.9.0
     hooks:
       - id: mypy
         additional_dependencies: []
-        exclude: example/
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0

@@ -56,6 +56,10 @@ where = ["src"]
 [tool.black]
 line-length = 88
 target-version = ["py312"]
+extend-exclude = '''
+^example/
+'''
+
 
 [tool.ruff]
 line-length = 88
@@ -72,3 +76,4 @@ python_version = "3.12"
 strict = false
 mypy_path = "src"
 ignore_missing_imports = true
+exclude = '^example/'
