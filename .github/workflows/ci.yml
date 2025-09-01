@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, master, dev]
+    branches: [master, dev]
   pull_request:
-    branches: [main, master]
+    branches: [master]
 
 
 jobs:
@@ -15,11 +15,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+        # Installs Python 3.12 on the VM
+      - name: Set up Python  
         uses: actions/setup-python@v5
         with:
           python-version: "3.12" 
 
+
+        # Caches pip packages based on pyproject.toml and requirements.txt files
       - name: Cache pip
         uses: actions/cache@v4
         with:
@@ -37,3 +40,28 @@ jobs:
         run: |
           pip install -e .[dev]
           python -c "import bridge; print('Imported bridge OK')"
+
+      - name: Lint (ruff) and format check (black)
+        run: |
+          ruff check .
+          black --check .
+
+      - name: Run tests
+        run: pytest -q --maxfail=1
+
+      - name: Build wheel and sdist
+        run: python -m build
+
+      - name: Verify clean install of built wheel
+        run: |
+          python -m venv .pkgcheck
+          . .pkgcheck/bin/activate
+          python -m pip install --upgrade pip
+          pip install dist/*.whl
+          python -c "import bridge; print('Wheel import OK')"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bridge-dist
+          path: dist/*
