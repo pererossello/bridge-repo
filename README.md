@@ -1,6 +1,6 @@
 # BRIDGE
 
-Check `/dev` branch for source code. 
+Check `dev` branch for source code. 
 
 This repository will contain the implementation of **BRIDGE** (Bayesian Reconstruction and Inference of Data-driven Generative Environments), a GPU-accelerated, differentiable framework written in [`jax`](https://docs.jax.dev/en/latest/index.html) for field-level inference in large-scale structure cosmology.
 
